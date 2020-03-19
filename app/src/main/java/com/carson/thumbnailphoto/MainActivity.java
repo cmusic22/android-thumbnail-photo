@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mTakePictureButton;
     private ImageView mCameraPicture;
 
+    private static int REQUEST_CODE_TAKE_PICTURE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_TAKE_PICTURE && resultCode == RESULT_OK) {
             Bitmap thumbnail = data.getParcelableExtra("data");
             mCameraPicture.setImageBitmap(thumbnail);
